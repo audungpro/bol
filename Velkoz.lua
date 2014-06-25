@@ -1,17 +1,3 @@
-if myHero.charName ~= "Velkoz" then return end
-require 'VPrediction'
-local AuthList = {"audung","audungpro"}
-local User = string.lower(GetUser()) 
-function Auth()
-    for i, users in pairs(AuthList) do 
-        if string.lower(users) == User then 
-            return true 
-        end
-    end
-    return false
-end
-if not Auth() then print("Dienofail Velkoz: Not Authenticated") return end 
-print("Dienofail Velkoz: Authenticated as "..User)
 local version = "1.1"
 local AUTOUPDATE = true
 local UPDATE_NAME = "Velkoz"
@@ -42,6 +28,21 @@ if AUTOUPDATE then
         print("<font color=\"#FF0000\">Error downloading version info</font>")
     end
 end
+if myHero.charName ~= "Velkoz" then return end
+require 'VPrediction'
+local AuthList = {"audung","audungpro"}
+local User = string.lower(GetUser()) 
+function Auth()
+    for i, users in pairs(AuthList) do 
+        if string.lower(users) == User then 
+            return true 
+        end
+    end
+    return false
+end
+if not Auth() then print("Dienofail Velkoz: Not Authenticated") return end 
+print("Dienofail Velkoz: Authenticated as "..User)
+Print("audungpro --- Gamesupport.vn")
 --End Honda7 credit
 --Start Vadash Credit
 class 'Kalman' -- {
