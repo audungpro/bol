@@ -12,10 +12,7 @@ function Auth()
 end
 if not Auth() then print("Dienofail Velkoz: Not Authenticated") return end 
 print("Dienofail Velkoz: Authenticated as "..User)
-Print("audungpro - Gamesupport.vn")
 local version = "1.1"
-
-
 local AUTOUPDATE = true
 local UPDATE_NAME = "Velkoz"
 local UPDATE_HOST = "raw.github.com"
@@ -187,6 +184,7 @@ function Init()
 	JungleMinions = minionManager(MINION_JUNGLE, 1200, myHero, MINION_SORT_MAXHEALTH_DEC)
 	initDone = true
 	print('Dienofail Velkoz ' .. tostring(version) .. ' loaded!')
+	print('audungpro - gamesupport.vn')
 end
 
 function OnWndMsg(msg,key)
