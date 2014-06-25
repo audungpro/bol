@@ -13,7 +13,7 @@ end
 if not Auth() then print("Dienofail Velkoz: Not Authenticated") return end 
 print("Dienofail Velkoz: Authenticated as "..User)
 Print("audungpro - Gamesupport.vn")
-local version = "1.0"
+local version = "1.1"
 
 
 local AUTOUPDATE = true
