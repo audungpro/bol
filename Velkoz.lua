@@ -16,36 +16,34 @@ Print("audungpro - Gamesupport.vn")
 local version = "1.0"
 
 
-local autoupdateenabled = true
-local UPDATE_SCRIPT_NAME = "Velkoz"
+local AUTOUPDATE = true
+local UPDATE_NAME = "Velkoz"
 local UPDATE_HOST = "raw.github.com"
-local UPDATE_PATH = "/audungpro/BoL/master/Velkoz.lua"
+local VERSION_PATH = "/audungpro/BoL/master/versions/Velkoz.version" .."?rand="..math.random(1,10000)
 local UPDATE_FILE_PATH = SCRIPT_PATH..GetCurrentEnv().FILE_NAME
-local UPDATE_URL = "https://"..UPDATE_HOST..UPDATE_PATH
-
-local ServerData
-if autoupdateenabled then
-	GetAsyncWebResult(UPDATE_HOST, UPDATE_PATH, function(d) ServerData = d end)
-	function update()
-		if ServerData ~= nil then
-			local ServerVersion
-			local send, tmp, sstart = nil, string.find(ServerData, "local version = \"")
-			if sstart then
-				send, tmp = string.find(ServerData, "\"", sstart+1)
-			end
-			if send then
-				ServerVersion = tonumber(string.sub(ServerData, sstart+1, send-1))
-			end
-
-			if ServerVersion ~= nil and tonumber(ServerVersion) ~= nil and tonumber(ServerVersion) > tonumber(version) then
-				DownloadFile(UPDATE_URL.."?nocache"..myHero.charName..os.clock(), UPDATE_FILE_PATH, function () print("<font color=\"#FF0000\"><b>"..UPDATE_SCRIPT_NAME..":</b> successfully updated. Reload (double F9) Please. ("..version.." => "..ServerVersion..")</font>") end)     
-			elseif ServerVersion then
-				print("<font color=\"#FF0000\"><b>"..UPDATE_SCRIPT_NAME..":</b> You have got the latest version: <u><b>"..ServerVersion.."</b></u></font>")
-			end		
-			ServerData = nil
-		end
-	end
-	AddTickCallback(update)
+local UPDATE_FILE_PATH = string.gsub(UPDATE_FILE_PATH, "\\", "/")
+local UPDATE_URL = "https://raw.github.com/audungpro/BoL/master/Velkoz.lua" .. "?rand=" .. math.random(1,100000)
+function Download()
+  DownloadFile(UPDATE_URL, UPDATE_FILE_PATH, function () print("<font color=\"#FF0000\"> Vel'koz, The Geometry Nightmare Download Finished</font>") end)
+end
+if AUTOUPDATE then
+    local ServerData = GetWebResult(UPDATE_HOST, VERSION_PATH)
+    if ServerData then
+        local ServerVersion = string.match(ServerData, "%d+.%d+")
+        if ServerVersion then
+            ServerVersion = tonumber(ServerVersion)
+            if tonumber(version) < ServerVersion then
+                print("<font color=\"#FF0000\">New version available "..ServerVersion .."</font>")
+                print("<font color=\"#FF0000\">Updating, please don't press F9</font>")
+                DelayAction(Download, 2)
+                --DelayAction(function () print("Successfully updated. ("..version.." => "..ServerVersion..") press F9 twice to load the updated version after auth.") end, 3)
+            else
+                print("<font color=\"#FF0000\">You have got the latest version ("..ServerVersion..")</font>")
+            end
+        end
+    else
+        print("<font color=\"#FF0000\">Error downloading version info</font>")
+    end
 end
 --End Honda7 credit
 --Start Vadash Credit
