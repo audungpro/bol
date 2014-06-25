@@ -183,8 +183,7 @@ function Init()
 	EnemyMinions = minionManager(MINION_ENEMY, 1200, myHero, MINION_SORT_MAXHEALTH_DEC)
 	JungleMinions = minionManager(MINION_JUNGLE, 1200, myHero, MINION_SORT_MAXHEALTH_DEC)
 	initDone = true
-	print('Dienofail Velkoz ' .. tostring(version) .. ' loaded!')
-	print('audungpro - gamesupport.vn')
+	print('Dienofail Velkoz ' .. tostring(version) .. ' loaded! - audungpro ----- gamesupport.vn')
 end
 
 function OnWndMsg(msg,key)
