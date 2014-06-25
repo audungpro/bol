@@ -7,7 +7,7 @@ local UPDATE_FILE_PATH = SCRIPT_PATH..GetCurrentEnv().FILE_NAME
 local UPDATE_FILE_PATH = string.gsub(UPDATE_FILE_PATH, "\\", "/")
 local UPDATE_URL = "https://raw.github.com/audungpro/BoL/master/Velkoz.lua" .. "?rand=" .. math.random(1,100000)
 function Download()
-  DownloadFile(UPDATE_URL, UPDATE_FILE_PATH, function () print("<font color=\"#FF0000\"> Vel'koz, The Geometry Nightmare Download Finished</font>") end)
+  DownloadFile(UPDATE_URL, UPDATE_FILE_PATH, function () print("<font color=\"#FF0000\"> Vel'koz, The Geometry Nightmare Download Finished</font>") print("<font color=\"#FF0000\"> Please press F9 2 times to reload new script") end)
 end
 if AUTOUPDATE then
     local ServerData = GetWebResult(UPDATE_HOST, VERSION_PATH)
@@ -42,7 +42,7 @@ function Auth()
 end
 if not Auth() then print("Dienofail Velkoz: Not Authenticated") return end 
 print("Dienofail Velkoz: Authenticated as "..User)
-Print("audungpro --- Gamesupport.vn")
+print("audungpro --- Gamesupport.vn")
 --End Honda7 credit
 --Start Vadash Credit
 class 'Kalman' -- {
@@ -184,7 +184,7 @@ function Init()
 	EnemyMinions = minionManager(MINION_ENEMY, 1200, myHero, MINION_SORT_MAXHEALTH_DEC)
 	JungleMinions = minionManager(MINION_JUNGLE, 1200, myHero, MINION_SORT_MAXHEALTH_DEC)
 	initDone = true
-	print('Dienofail Velkoz ' .. tostring(version) .. ' loaded! - audungpro ----- gamesupport.vn')
+	print('Dienofail Velkoz ' .. tostring(version) .. ' loaded!')
 end
 
 function OnWndMsg(msg,key)
