@@ -30,19 +30,6 @@ if AUTOUPDATE then
 end
 if myHero.charName ~= "Velkoz" then return end
 require 'VPrediction'
-local AuthList = {"audung","audungpro"}
-local User = string.lower(GetUser()) 
-function Auth()
-    for i, users in pairs(AuthList) do 
-        if string.lower(users) == User then 
-            return true 
-        end
-    end
-    return false
-end
-if not Auth() then print("Dienofail Velkoz: Not Authenticated") return end 
-print("Dienofail Velkoz: Authenticated as "..User)
-print("audungpro --- Gamesupport.vn")
 --End Honda7 credit
 --Start Vadash Credit
 class 'Kalman' -- {
